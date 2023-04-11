@@ -24,7 +24,7 @@ def write_result_s3(filename, tup):
     mfile.write(res.encode('utf-8'))
     mfile.seek(0)
 
-    s3.upload_fileobj(mfile, output_bucket, filename)
+    s3.upload_fileobj(mfile, output_bucket, "{}.csv".format(filename))
 
 def get_data(name):
     table = dynamodb.Table('students')
