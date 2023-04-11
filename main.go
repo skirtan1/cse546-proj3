@@ -19,7 +19,7 @@ var lambdaClient *lambda.Client
 var s3Client *s3.Client
 
 const (
-	funcName     = "ccpproj-2"
+	funcName     = "ccp-proj3"
 	inputBucket  = "cse546proj3-input"
 	outputBucket = "cse546proj3-output"
 )
@@ -81,7 +81,7 @@ func Eventhandler(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	log.Println(string(data))
+	// log.Println(string(data))
 
 	if err := json.Unmarshal(data, &event); err != nil {
 		log.Println("Error while decoding json data", err.Error())
@@ -104,7 +104,8 @@ func Eventhandler(w http.ResponseWriter, r *http.Request) {
 			return
 		}
 
-		log.Println(string(data))
+		// log.Println(string(data))
+
 		params := lambda.InvokeInput{
 			FunctionName:   &name,
 			InvocationType: types.InvocationTypeEvent,
@@ -131,8 +132,7 @@ func Eventhandler(w http.ResponseWriter, r *http.Request) {
 		}
 		defer res.Body.Close()
 
-		var output []byte
-		_, err = res.Body.Read(output)
+		output, err := ioutil.ReadAll(res.Body)
 		if err != nil {
 			log.Println("Error reading s3 response body")
 			w.WriteHeader(http.StatusInternalServerError)
