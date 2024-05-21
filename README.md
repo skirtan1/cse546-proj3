@@ -22,11 +22,6 @@
 
 * Account ID: 583586231865
 * user: demo
-* password: eKwG9(sU-ZoWpE/\T"i"
-* aws_access_key_id: AKIAYPYDTGY4UM3UQCOJ
-* aws_secret_access_key: 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
-* default region: us-east-1
-* sign-in URL: https://583586231865.signin.aws.amazon.com/console
 
 -----
 
